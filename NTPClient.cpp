@@ -132,9 +132,18 @@ unsigned long NTPClient::getEpochTime() const {
          ((millis() - this->_lastUpdate) / 1000); // Time since last update
 }
 
+int NTPClient::getYear() const {
+  return (float)((int)((this->getEpochTime() / 31556926) + 1970));
+}
+int NTPClient::getMonth() const {
+  //float x = ((this->getEpochTime() % 31556926) / 2629743);
+  //int y = (float)((int)((this->getEpochTime() % 31556926) / 2629743));
+  return (float)((int)((this->getEpochTime() % 31556926) / 2629743));
+}
 int NTPClient::getDay() const {
   return (((this->getEpochTime()  / 86400L) + 4 ) % 7); //0 is Sunday
 }
+
 int NTPClient::getHours() const {
   return ((this->getEpochTime()  % 86400L) / 3600);
 }
