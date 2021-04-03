@@ -73,8 +73,10 @@ class NTPClient {
      * @return true on success, false on failure
      */
     bool forceUpdate();
-
+  
+    int getYear() const;  
     int getDay() const;
+  
     int getHours() const;
     int getMinutes() const;
     int getSeconds() const;
